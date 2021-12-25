@@ -7,6 +7,7 @@ import com.dah.rgb.threads.impl.AudioThread;
 import com.dah.rgb.threads.impl.GraphicsThread;
 import com.dah.rgb.utils.Config;
 import com.dah.rgb.utils.logging.LWJGLLogStream;
+import com.dah.rgb.utils.timers.Timer;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.Configuration;
 
@@ -20,6 +21,7 @@ public abstract class Game<SELF extends Game<SELF>> implements AutoCloseable {
             LWJGL_DEBUG = Config.LWJGL_DEBUG.get(true),
             LOG_LWJGL_MESSAGE = Config.LOG_LWJGL_MESSAGE.get(true);
     public static final Logger LOGGER = Logger.getLogger("rstg");
+    public static final Timer GLOBAL_TIMER = Game::getCurrentTime;
     protected final @NotNull AtomicBoolean running;
     protected final @NotNull AtomicReference<Double> deltaTime;
 
